@@ -34,7 +34,7 @@ const eqObjects = function(object1, object2) {
 // FUNCTION IMPLEMENTATION
 const assertObjectsEqual = function(actual, expected) {
   // Implement me!
-  const inspect = require('util').inspect; 
+  const inspect = require('util').inspect;
   console.log(`Example label: ${inspect(actual)}`);
 
   let assertion;
