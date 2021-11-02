@@ -1,13 +1,31 @@
-const assertEqual = require("../assertEqual");
-const assertArraysEqual = require("../assertArraysEqual");
-const tail = require("../tail.js");
+const assert = require("chai").assert;
+const tail = require("../tail");
 
-assertArraysEqual(tail(["Hello", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
-const result = tail(["Hello", "Lighthouse", "Labs"]);
-assertEqual(result.length, 2);
-assertEqual(result[0], "Lighthouse");
-assertEqual(result[1], "Labs");
+describe("#tail", () => {
+  it('returns "Lighthouse", "Labs" for ["Hello", "Lighthouse", "Labs"]', () => {
+    assert.deepEqual(tail(["Hello", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
+  });
 
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-assertArraysEqual(tail(words), ["Lighthouse", "Labs"]);
-assertEqual(words.length, 3);
+  const result = tail(["Hello", "Lighthouse", "Labs"]);
+  it('returns 2 for ["Hello", "Lighthouse", "Labs"]', () => {
+    assert.strictEqual(result.length,2);
+  });
+
+  it('returns "Lighthouse" for result[0] of ["Hello", "Lighthouse", "Labs"]', () => {
+    assert.strictEqual(result[0],"Lighthouse");
+  });
+
+  it('returns "Labs" for result[1] of ["Hello", "Lighthouse", "Labs"]', () => {
+    assert.strictEqual(result[1],"Labs");
+  });
+
+  const words = ["Yo Yo", "Lighthouse", "Labs"];
+  it('returns "Lighthouse", "Labs" for ["Yo Yo", "Lighthouse", "Labs"]', () => {
+    assert.deepEqual(tail(words),["Lighthouse", "Labs"]);
+  });
+
+  it('returns 3 for ["Yo Yo", "Lighthouse", "Labs"]', () => {
+    assert.strictEqual(words.length,3);
+  });
+
+});
